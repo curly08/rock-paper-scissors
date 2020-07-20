@@ -1,0 +1,1 @@
+This is my second project for TOP. I will be using my newfound javascript skills to create simple (although complex for me) functions that replicate a game of rock, paper, scissors against the computer.
