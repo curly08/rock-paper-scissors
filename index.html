@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock, Paper, Scissors YO!</title>
+</head>
+<body>
+<! style idea: "Choose your fighter" for the user's selection >
+
+    <script>
+        function getRandomInteger(min, max) {
+            return Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+        }
+
+        function computerPlay() {
+            let selection = getRandomInteger(3, 1);
+
+            return selection;
+        }
+        
+        //console.log(computerPlay());
+
+        function playerSelection() {
+            let playerSelection = prompt('Are you going into battle with rock, paper, or scissors?', 'Good luck, soldier!');
+
+            if (playerSelection.toLowerCase() == 'rock') {
+                return 1;
+            } else if (playerSelection.toLowerCase() == 'paper') {
+                return 2;
+            } else if (playerSelection.toLowerCase() == 'scissors') {
+                return 3;
+            } else {
+                alert('That\'s not an option, soldier!');
+            }
+        }
+        
+        //console.log(playerSelection());
+
+        function decideRoundWinner() {
+
+            let userSelection = playerSelection();
+            let computerSelection = computerPlay();
+            if (computerSelection == 1 && userSelection == 2) {
+                return 'Computer wins!';
+            }
+        }
+        
+        console.log(decideRoundWinner());
+        
+
+    </script>
+
+</body>
+</html>
