@@ -13,39 +13,118 @@
 
         function computerPlay() {
             let selection = getRandomInteger(3, 1);
-
             return selection;
         }
-        
-        //console.log(computerPlay());
 
-        function playerSelection() {
-            let playerSelection = prompt('Are you going into battle with rock, paper, or scissors?', 'Good luck, soldier!');
+        function userPlay() {
+            let selection = prompt('Are you going into battle with rock, paper, or scissors?', 'Good luck, soldier!');
+            
+            if (selection === null) {
+                return;
+            }
 
-            if (playerSelection.toLowerCase() == 'rock') {
-                return 1;
-            } else if (playerSelection.toLowerCase() == 'paper') {
-                return 2;
-            } else if (playerSelection.toLowerCase() == 'scissors') {
-                return 3;
-            } else {
-                alert('That\'s not an option, soldier!');
+            switch (selection.toLowerCase()) {
+                case 'rock':
+                    return 1;
+                    break;
+                case 'paper':
+                    return 2;
+                    break;
+                case 'scissors':
+                    return 3;
+                    break;
+                default:
+                    alert('That\'s not an option, soldier!');
             }
         }
-        
-        //console.log(playerSelection());
 
-        function decideRoundWinner() {
-
-            let userSelection = playerSelection();
+        function playRound() {
+            let win;
+            let loss;
+            let tie;
+            let userSelection = userPlay();
             let computerSelection = computerPlay();
-            if (computerSelection == 1 && userSelection == 2) {
-                return 'Computer wins!';
+            console.log(userSelection, computerSelection);
+
+            if (userSelection == 1 && computerSelection == 1) {
+                return 'It\'s a tie! Both of you chose rock.';
+            } else if (userSelection == 1 && computerSelection == 2) {
+                return 'Computer wins! Paper beats rock.';
+            } else if (userSelection == 1 && computerSelection == 3) {
+                return 'You win! Rock beats scissors.';
+            } else if (userSelection == 2 && computerSelection == 1) {
+                return 'You win! Paper beats rock.';
+            } else if (userSelection == 2 && computerSelection == 2) {
+                return 'It\'s a tie! Both of you chose paper.';
+            } else if (userSelection == 2 && computerSelection == 3) {
+                return 'Computer wins! Scissors beat paper.';
+            } else if (userSelection == 3 && computerSelection == 1) {
+                return 'Computer wins! Rock beats scissors.';
+            } else if (userSelection == 3 && computerSelection == 2) {
+                return 'You win! Scissors beat paper.';
+            } else if (userSelection == 3 && computerSelection == 3) {
+                return 'It\'s a tie! Both of you chose scissors.';
+            } else {
+                return 'Round dismissed.';
             }
         }
         
-        console.log(decideRoundWinner());
         
+        //console.log(playRound());
+
+
+        function game() {
+            let userScore = 0;
+            let computerScore = 0;
+            let roundDecision = playRound();
+            
+
+
+            switch (roundDecision) {
+                case 'It\'s a tie! Both of you chose rock.':
+                    console.log(userScore, computerScore);
+                    break;
+                case 'Computer wins! Paper beats rock.':
+                    commputerScore = computerScore + 1;
+                    console.log(userScore, computerScore);
+                    break;
+                case 'You win! Rock beats scissors.':
+                    userScore = userScore + 1;
+                    console.log(userScore, computerScore);
+                    break;
+                case 'You win! Paper beats rock.':
+                    userScore = userScore + 1;
+                    console.log(userScore, computerScore);
+                    break;
+                case 'It\'s a tie! Both of you chose paper.':
+                    console.log(userScore, computerScore);
+                    break;
+                case 'Computer wins! Scissors beat paper.':
+                    commputerScore = computerScore + 1;
+                    console.log(userScore, computerScore);
+                    break;
+                case 'Computer wins! Rock beats scissors.':
+                    commputerScore = computerScore + 1;
+                    console.log(userScore, computerScore);
+                    break;
+                case 'You win! Scissors beat paper.':
+                    userScore = userScore + 1;
+                    console.log(userScore, computerScore);
+                    break;
+                case 'It\'s a tie! Both of you chose scissors.':
+                    console.log(userScore, computerScore);
+                    break;
+                default:
+                    return 'Default';
+            }
+
+
+
+
+
+        }
+        
+        console.log(game());
 
     </script>
 
