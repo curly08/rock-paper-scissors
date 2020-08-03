@@ -4,7 +4,7 @@
     <title>Rock, Paper, Scissors YO!</title>
 </head>
 <body>
-<! style idea: "Choose your fighter" for the user's selection >
+<! style idea: "Choose your fighter" for the user's selection>
 
     <script>
         function getRandomInteger(min, max) {
@@ -38,95 +38,88 @@
             }
         }
 
-        function playRound() {
-            let win;
-            let loss;
-            let tie;
-            let userSelection = userPlay();
-            let computerSelection = computerPlay();
+        const userSelection = userPlay();
+        const computerSelection = computerPlay();
+
+        function playRound(userSelection, computerSelection) {
+            let win = 1;
+            let loss = 2;
+            let tie = 3;
+            let result;
+
             console.log(userSelection, computerSelection);
 
             if (userSelection == 1 && computerSelection == 1) {
-                return 'It\'s a tie! Both of you chose rock.';
+                result = 'You tied. You both chose rock.';
+                console.log(result);
+                return tie;
             } else if (userSelection == 1 && computerSelection == 2) {
-                return 'Computer wins! Paper beats rock.';
+                result = 'You lost. Paper covers rock.';
+                console.log(result);
+                return loss;
             } else if (userSelection == 1 && computerSelection == 3) {
-                return 'You win! Rock beats scissors.';
+                result = 'You won. Rock crushes scissors.';
+                console.log(result);
+                return win;
             } else if (userSelection == 2 && computerSelection == 1) {
-                return 'You win! Paper beats rock.';
+                result = 'You won. Paper covers rock.';
+                console.log(result);
+                return win;
             } else if (userSelection == 2 && computerSelection == 2) {
-                return 'It\'s a tie! Both of you chose paper.';
+                result = 'You tied. You both chose paper.';
+                console.log(result);
+                return tie;
             } else if (userSelection == 2 && computerSelection == 3) {
-                return 'Computer wins! Scissors beat paper.';
+                result = 'You lost. Scissors cut up paper.';
+                console.log(result);
+                return loss;
             } else if (userSelection == 3 && computerSelection == 1) {
-                return 'Computer wins! Rock beats scissors.';
+                result = 'You lost. Rock crushes scissors.';
+                console.log(result);
+                return loss;
             } else if (userSelection == 3 && computerSelection == 2) {
-                return 'You win! Scissors beat paper.';
+                result = 'You won. Scissors cut up paper.';
+                console.log(result);
+                return win;
             } else if (userSelection == 3 && computerSelection == 3) {
-                return 'It\'s a tie! Both of you chose scissors.';
+                result = 'You tied. You both chose scissors.';
+                console.log(result);
+                return tie;
             } else {
                 return 'Round dismissed.';
             }
         }
-        
-        
-        //console.log(playRound());
-
 
         function game() {
             let userScore = 0;
             let computerScore = 0;
-            let roundDecision = playRound();
-            
+            let roundDecision = playRound(userSelection, computerSelection);
 
+            roundDecision;
 
             switch (roundDecision) {
-                case 'It\'s a tie! Both of you chose rock.':
-                    console.log(userScore, computerScore);
-                    break;
-                case 'Computer wins! Paper beats rock.':
-                    commputerScore = computerScore + 1;
-                    console.log(userScore, computerScore);
-                    break;
-                case 'You win! Rock beats scissors.':
+                case 1:
                     userScore = userScore + 1;
-                    console.log(userScore, computerScore);
+                    console.log(`Your score: ${userScore}`);
+                    console.log(`Computer score: ${computerScore}`);
                     break;
-                case 'You win! Paper beats rock.':
-                    userScore = userScore + 1;
-                    console.log(userScore, computerScore);
+                case 2:
+                    computerScore = computerScore + 1;
+                    console.log(`Your score: ${userScore}`);
+                    console.log(`Computer score: ${computerScore}`);
                     break;
-                case 'It\'s a tie! Both of you chose paper.':
-                    console.log(userScore, computerScore);
-                    break;
-                case 'Computer wins! Scissors beat paper.':
-                    commputerScore = computerScore + 1;
-                    console.log(userScore, computerScore);
-                    break;
-                case 'Computer wins! Rock beats scissors.':
-                    commputerScore = computerScore + 1;
-                    console.log(userScore, computerScore);
-                    break;
-                case 'You win! Scissors beat paper.':
-                    userScore = userScore + 1;
-                    console.log(userScore, computerScore);
-                    break;
-                case 'It\'s a tie! Both of you chose scissors.':
-                    console.log(userScore, computerScore);
+                case 3:
+                    console.log(`Your score: ${userScore}`);
+                    console.log(`Computer score: ${computerScore}`);
                     break;
                 default:
                     return 'Default';
             }
-
-
-
-
-
         }
         
-        console.log(game());
+        //I can't get the function to play 5 rounds nor keep a running score
+        game();
 
     </script>
-
 </body>
 </html>
