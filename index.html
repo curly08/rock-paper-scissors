@@ -38,10 +38,9 @@
             }
         }
 
-        const userSelection = userPlay();
-        const computerSelection = computerPlay();
-
-        function playRound(userSelection, computerSelection) {
+        function playRound() {
+            const userSelection = userPlay();
+            const computerSelection = computerPlay();
             let win = 1;
             let loss = 2;
             let tie = 3;
@@ -90,10 +89,12 @@
             }
         }
 
+        let userScore = 0;
+        let computerScore = 0;
+
         function game() {
-            let userScore = 0;
-            let computerScore = 0;
-            let roundDecision = playRound(userSelection, computerSelection);
+            
+            let roundDecision = playRound();
 
             roundDecision;
 
@@ -117,8 +118,23 @@
             }
         }
         
-        //I can't get the function to play 5 rounds nor keep a running score
-        game();
+        function fullGame() {
+            game();
+            game();
+            game();
+            game();
+            game();
+
+            if (userScore > computerScore) {
+                return console.log('You won the best of 5! Congratulations!');
+            } else if (userScore < computerScore) {
+                return console.log('You lost the best of 5. :(');
+            } else {
+                return console.log('You tied');
+            }
+        }
+
+        fullGame();
 
     </script>
 </body>
