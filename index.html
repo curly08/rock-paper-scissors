@@ -4,138 +4,19 @@
     <title>Rock, Paper, Scissors YO!</title>
 </head>
 <body>
-<! style idea: "Choose your fighter" for the user's selection>
+    <div class="container">
+        <div class="selection">
+            <button id="rock" class="button">ROCK</button>
+        </div>
 
-    <script>
-        function getRandomInteger(min, max) {
-            return Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-        }
+        <div class="selection">
+            <button id="paper" class="button">PAPER</button>
+        </div>
 
-        function computerPlay() {
-            let selection = getRandomInteger(3, 1);
-            return selection;
-        }
-
-        function userPlay() {
-            let selection = prompt('Are you going into battle with rock, paper, or scissors?', 'Good luck, soldier!');
-            
-            if (selection === null) {
-                return;
-            }
-
-            switch (selection.toLowerCase()) {
-                case 'rock':
-                    return 1;
-                    break;
-                case 'paper':
-                    return 2;
-                    break;
-                case 'scissors':
-                    return 3;
-                    break;
-                default:
-                    alert('That\'s not an option, soldier!');
-            }
-        }
-
-        function playRound() {
-            const userSelection = userPlay();
-            const computerSelection = computerPlay();
-            let win = 1;
-            let loss = 2;
-            let tie = 3;
-            let result;
-
-            console.log(userSelection, computerSelection);
-
-            if (userSelection == 1 && computerSelection == 1) {
-                result = 'You tied. You both chose rock.';
-                console.log(result);
-                return tie;
-            } else if (userSelection == 1 && computerSelection == 2) {
-                result = 'You lost. Paper covers rock.';
-                console.log(result);
-                return loss;
-            } else if (userSelection == 1 && computerSelection == 3) {
-                result = 'You won. Rock crushes scissors.';
-                console.log(result);
-                return win;
-            } else if (userSelection == 2 && computerSelection == 1) {
-                result = 'You won. Paper covers rock.';
-                console.log(result);
-                return win;
-            } else if (userSelection == 2 && computerSelection == 2) {
-                result = 'You tied. You both chose paper.';
-                console.log(result);
-                return tie;
-            } else if (userSelection == 2 && computerSelection == 3) {
-                result = 'You lost. Scissors cut up paper.';
-                console.log(result);
-                return loss;
-            } else if (userSelection == 3 && computerSelection == 1) {
-                result = 'You lost. Rock crushes scissors.';
-                console.log(result);
-                return loss;
-            } else if (userSelection == 3 && computerSelection == 2) {
-                result = 'You won. Scissors cut up paper.';
-                console.log(result);
-                return win;
-            } else if (userSelection == 3 && computerSelection == 3) {
-                result = 'You tied. You both chose scissors.';
-                console.log(result);
-                return tie;
-            } else {
-                return 'Round dismissed.';
-            }
-        }
-
-        let userScore = 0;
-        let computerScore = 0;
-
-        function game() {
-            
-            let roundDecision = playRound();
-
-            roundDecision;
-
-            switch (roundDecision) {
-                case 1:
-                    userScore = userScore + 1;
-                    console.log(`Your score: ${userScore}`);
-                    console.log(`Computer score: ${computerScore}`);
-                    break;
-                case 2:
-                    computerScore = computerScore + 1;
-                    console.log(`Your score: ${userScore}`);
-                    console.log(`Computer score: ${computerScore}`);
-                    break;
-                case 3:
-                    console.log(`Your score: ${userScore}`);
-                    console.log(`Computer score: ${computerScore}`);
-                    break;
-                default:
-                    return 'Default';
-            }
-        }
-        
-        function fullGame() {
-            game();
-            game();
-            game();
-            game();
-            game();
-
-            if (userScore > computerScore) {
-                return console.log('You won the best of 5! Congratulations!');
-            } else if (userScore < computerScore) {
-                return console.log('You lost the best of 5. :(');
-            } else {
-                return console.log('You tied');
-            }
-        }
-
-        fullGame();
-
-    </script>
+        <div class="selection">
+            <button id="scissors" class="button">SCISSORS</button>
+        </div>
+    </div>
 </body>
+<script type="text/javascript" src="scripts.js"></script>
 </html>
