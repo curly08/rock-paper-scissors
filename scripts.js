@@ -1,73 +1,5 @@
-//play a round function
-function playRound() {
-    const compSelection = random();
-    //console.log(this.id, compSelection);
-    const win = 1;
-    const loss = 2;
-    const tie = 3;
-
-    let userScore = 0;
-    let computerScore = 0;
-
-    if (this.id == 'rock' && compSelection == 'rock') {
-        roundDecision.textContent = 'You tied. You both chose rock.';
-        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
-        return tie;
-    } else if (this.id == 'rock' && compSelection == 'paper') {
-        roundDecision.textContent = 'You lost. Paper covers rock.';
-        computerScore += 1;
-        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
-        return loss;
-    } else if (this.id == 'rock' && compSelection == 'scissors') {
-        roundDecision.textContent = 'You won. Rock crushes scissors.';
-        userScore += 1;
-        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
-        return win;
-    } else if (this.id == 'paper' && compSelection == 'rock') {
-        roundDecision.textContent = 'You won. Paper covers rock.';
-        userScore += 1;
-        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
-        return win;
-    } else if (this.id == 'paper' && compSelection == 'paper') {
-        roundDecision.textContent = 'You tied. You both chose paper.';
-        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
-        return tie;
-    } else if (this.id == 'paper' && compSelection == 'scissors') {
-        roundDecision.textContent = 'You lost. Scissors cut up paper.';
-        computerScore += 1;
-        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
-        return loss;
-    } else if (this.id == 'scissors' && compSelection == 'rock') {
-        roundDecision.textContent = 'You lost. Rock crushes scissors.';
-        computerScore += 1;
-        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
-        return loss;
-    } else if (this.id == 'scissors' && compSelection == 'paper') {
-        roundDecision.textContent = 'You won. Scissors cut up paper.';
-        userScore += 1;
-        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
-        return win;
-    } else if (this.id == 'scissors' && compSelection == 'scissors') {
-        roundDecision.textContent = 'You tied. You both chose scissors.';
-        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
-        return tie;
-    } else {
-        return 'Round dismissed.';
-    }
-}
-
-const container = document.querySelector('#container');
-
-//create div containing round decision
-const roundDecision = document.createElement('div');
-roundDecision.setAttribute('id', 'round-decision');
-container.appendChild(roundDecision);
-
-//create div containing the score
-const score = document.createElement('div');
-score.setAttribute('id', 'score');
-container.appendChild(score);
-
+let userScore = 0;
+let computerScore = 0;
 
 //computer selection
 function random() {
@@ -92,52 +24,82 @@ userSelection.forEach((button) => {
     button.addEventListener('click', playRound);
 });
 
+//check to see if someone gets 5 points and resets the game
+function checkForWinner() {
+    if (userScore == 5 || computerScore == 5) {
+        roundDecision.textContent = '';
+        score.textContent = '';
+    }
 
-//score isn't keeping a running tally
-//do i need looops?
-
-
-
-
-function game() {
-    
-    let roundDecision = playRound();
-
-    roundDecision;
-
-    switch (roundDecision) {
-        case 1:
-            userScore = userScore + 1;
-            console.log(`Your score: ${userScore}`);
-            console.log(`Computer score: ${computerScore}`);
-            break;
-        case 2:
-            computerScore = computerScore + 1;
-            console.log(`Your score: ${userScore}`);
-            console.log(`Computer score: ${computerScore}`);
-            break;
-        case 3:
-            console.log(`Your score: ${userScore}`);
-            console.log(`Computer score: ${computerScore}`);
-            break;
-        default:
-            return 'Default';
+    if (userScore == 5) {
+        endGame.textContent = 'You were the first to get 5 points! Congratulations!';
+        userScore = 0;
+        computerScore = 0;
+    } else if (computerScore == 5) {
+        endGame.textContent = 'The computer got 5 points first. :(';
+        userScore = 0;
+        computerScore = 0;
     }
 }
 
-function fullGame() {
-    game();
-    game();
-    game();
-    game();
-    game();
+//play a round function
+function playRound() {
+    const compSelection = random();
+    endGame.textContent = '';
 
-    if (userScore > computerScore) {
-        return console.log('You won the best of 5! Congratulations!');
-    } else if (userScore < computerScore) {
-        return console.log('You lost the best of 5. :(');
+    if (this.id == 'rock' && compSelection == 'rock') {
+        roundDecision.textContent = 'You tied. You both chose rock.';
+        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
+    } else if (this.id == 'rock' && compSelection == 'paper') {
+        roundDecision.textContent = 'You lost. Paper covers rock.';
+        computerScore += 1;
+        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
+    } else if (this.id == 'rock' && compSelection == 'scissors') {
+        roundDecision.textContent = 'You won. Rock crushes scissors.';
+        userScore += 1;
+        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
+    } else if (this.id == 'paper' && compSelection == 'rock') {
+        roundDecision.textContent = 'You won. Paper covers rock.';
+        userScore += 1;
+        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
+    } else if (this.id == 'paper' && compSelection == 'paper') {
+        roundDecision.textContent = 'You tied. You both chose paper.';
+        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
+    } else if (this.id == 'paper' && compSelection == 'scissors') {
+        roundDecision.textContent = 'You lost. Scissors cut up paper.';
+        computerScore += 1;
+        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
+    } else if (this.id == 'scissors' && compSelection == 'rock') {
+        roundDecision.textContent = 'You lost. Rock crushes scissors.';
+        computerScore += 1;
+        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
+    } else if (this.id == 'scissors' && compSelection == 'paper') {
+        roundDecision.textContent = 'You won. Scissors cut up paper.';
+        userScore += 1;
+        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
+    } else if (this.id == 'scissors' && compSelection == 'scissors') {
+        roundDecision.textContent = 'You tied. You both chose scissors.';
+        score.textContent = `Your score: ${userScore} Computer score: ${computerScore}`;
     } else {
-        return console.log('You tied');
+        return 'Round dismissed.';
     }
+
+    checkForWinner();
 }
 
+const container = document.querySelector('#container');
+
+//create div containing round decision
+const roundDecision = document.createElement('div');
+roundDecision.setAttribute('id', 'roundDecision');
+container.appendChild(roundDecision);
+
+//create div containing the score
+const score = document.createElement('div');
+score.setAttribute('id', 'score');
+container.appendChild(score);
+
+//create div containing end game result and reset button?
+const endGame = document.createElement('div');
+endGame.setAttribute('id', 'endGame');
+container.appendChild(endGame);
