@@ -26,11 +26,6 @@ userSelection.forEach((button) => {
 
 //check to see if someone gets 5 points and resets the game
 function checkForWinner() {
-    if (userScore == 5 || computerScore == 5) {
-        roundDecision.textContent = '';
-        score.textContent = '';
-    }
-
     if (userScore == 5) {
         endGame.textContent = 'You were the first to get 5 points! Congratulations!';
         userScore = 0;
